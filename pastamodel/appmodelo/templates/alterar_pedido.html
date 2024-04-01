@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Pedido</title>
+    <!-- Adicione os links para os estilos do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Alterar Pedido</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="cliente">Cliente:</label><br>
+        <input type="text" id="cliente" name="cliente" value="{{ form.instance.cliente }}"><br><br>
+        <label for="produto">Produto:</label><br>
+        <select id="produto" name="produto">
+            {% for produto in produtos %}
+                <option value="{{ produto.id }}" {% if produto.id == form.instance.produto.id %} selected {% endif %}>{{ produto.nome }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+    </div>
+    <!-- Scripts do Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

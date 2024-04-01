@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <!-- Adicione o link para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Bem-vindo à Página Inicial</h1>
+        <p>Escolha uma opção:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'cadastrar_cliente' %}" class="btn btn-primary">Cadastrar Cliente</a></li>
+            <li class="list-group-item"><a href="{% url 'listar_clientes' %}" class="btn btn-primary">Lista de Clientes</a></li>
+            <li class="list-group-item"><a href="{% url 'cadastrar_produto' %}" class="btn btn-primary">Cadastrar Produto</a></li>
+            <li class="list-group-item"><a href="{% url 'listar_produtos' %}" class="btn btn-primary">Lista de Produtos</a></li>
+            <li class="list-group-item"><a href="{% url 'cadastrar_pedido' %}" class="btn btn-primary">Cadatrar Pedidos</a></li>
+            <li class="list-group-item"><a href="{% url 'listar_pedido' %}" class="btn btn-primary">Lista Pedidos</a></li>
+             <!-- Adicione os links para as páginas de alterar e deletar -->
+             {% for pedido in pedidos %}
+             <li class="list-group-item">
+                 Pedido #{{ pedido.id }} - Cliente: {{ pedido.cliente.nome }}
+                 <a href="{% url 'alterar_pedido' pedido.id %}" class="btn btn-primary">Alterar Pedido</a>
+                 <a href="{% url 'deletar_pedido' pedido.id %}" class="btn btn-primary">Deletar Pedido</a>
+             </li>
+             {% endfor %}
+            
+        </ul>
+    </div>
+
+    <!-- Adicione o link para o Bootstrap JS e jQuery (opcional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
